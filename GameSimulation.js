@@ -12,16 +12,17 @@ class GameSimulator {
             let betNumber = Math.floor(Math.random() * 2);
             switch (betNumber) {
                 case 0:
-                    console.log('loss 1$');
                     cash = cash - BET;
+                    console.log('After loss 1$ cash', cash);
                     break;
                 case 1:
-                    console.log('win 1$');
                     cash = cash + BET;
+                    console.log('After win 1$ cash', cash);
                     break;
             }
-            console.log('cash in hand ', cash);
+            console.log('cash in hand ',cash);
         }
+    console.log('Done for day now resign ',cash);
     }
 }
 
