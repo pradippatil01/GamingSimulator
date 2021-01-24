@@ -1,8 +1,8 @@
 const gameSimulator = require('./GameSimulation');
-mainExcecution=()=>{
+mainExcecution = () => {
     console.log('Welcome to the GAMBLING SIMULATION');
-    gameSimulator.winLoss();
-    gameSimulator.yearRecord();
+    gameSimulator.gameStart();
+    gameSimulator.monthRecord();
     gameSimulator.findLuckiestAndUnLuckiestMonth();
 }
 mainExcecution();
