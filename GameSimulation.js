@@ -1,15 +1,25 @@
+/**************************************************************************
+*   Excecution : 1. default Node 
+*   Purpose    : Gaming simulator using Javascript
+*   @description 
+*   @author    : Pradip R patil (BridgeLabz)
+*   @file      : GameSimulator.js
+*   @version   : v15.6.0
+***************************************************************************/
+
 const STAKE = 100;
 const BET = 1;
-const WIN = 1;
-const LOSS = 0;
 const DAILY_LOW_LIMIT = (STAKE / 2);
 const DAILY_HIGH_LIMIT = (STAKE / 2 + STAKE);
 var monthArray = ['Jan', 'feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 var monthRecordData = new Map();
-var dayLoss = new Map();
-var dayWon = new Map();
-var unluck
+/**
+ * @class GameSimulator create
+ */
 class GameSimulator {
+    /**
+     * @method winLoss calculate 20 day stake
+     */
     winLoss = () => {
         var cash = 0;
         for (let j = 0; j < monthArray.length; j++) {
@@ -33,13 +43,17 @@ class GameSimulator {
             this.monthRecord(gameRecord, monthArray[j])
         }
     }
-
+    /**
+     * @method dailyRecord print day earn
+     */
     dailyRecord = (gameData, month) => {
-        console.log(month, "==>")
         for (let i = 0; i < gameData.length; i++) {
-            console.log('Day ', i, ' record ', gameData[i]);
+            //console.log('Day ', i, ' record ', gameData[i]);
         }
     }
+    /** 
+     * @method calculate whole month earn and store in map
+     */
     monthRecord = (gameRecord, month) => {
         var totalMonthEarn = 0;
         for (let i = 0; i < 20; i++) {
@@ -47,13 +61,17 @@ class GameSimulator {
         }
         monthRecordData.set(month, totalMonthEarn);
     }
-
+    /**
+     * @method yearRecord print all month earn
+     */
     yearRecord = () => {
         for (let i = 0; i < monthRecordData.size; i++) {
             console.log(monthArray[i], ' total cash ==> ', monthRecordData.get(monthArray[i]))
         }
     }
-
+    /**
+     * @method findLuckiestAndUnLuckiestMonth print lucky and unlucky month
+     */
     findLuckiestAndUnLuckiestMonth = () => {
         var maxLoss = monthRecordData.get(monthArray[0]);
         var index;
@@ -76,8 +94,4 @@ class GameSimulator {
     }
 }
 
-let gameSimulator = new GameSimulator();
-console.log('Welcome to the GAMBLING SIMULATION');
-gameSimulator.winLoss();
-gameSimulator.yearRecord();
-gameSimulator.findLuckiestAndUnLuckiestMonth();
+module.exports = new GameSimulator;
